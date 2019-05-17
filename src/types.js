@@ -1,12 +1,10 @@
 // @flow
 
-export type CoordinateSquareColorType = null | 'green' | 'red' | 'yellow' | 'blue';
-export type CoordinateSquareStyleType = 'single' | 'double' | 'borderless';
+export type SquareColorType = null | 'green' | 'red' | 'yellow' | 'blue';
+export type SquareStyleType = 'single-character' | 'single' | 'double' | 'borderless';
 
-export type CoordinateSquareType = {|
-  +color: CoordinateSquareColorType,
-  +name: string,
-  +style: CoordinateSquareStyleType,
+export type CoordinateGridMemberType = {|
+  +body: string,
   +x: number,
   +y: number
 |};

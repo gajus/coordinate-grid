@@ -1,12 +1,13 @@
 // @flow
 
 import test from 'ava';
+import createCoordinateGridMember from '../../../src/factories/createCoordinateGridMember';
 import drawCoordinateGrid from '../../../src/utilities/drawCoordinateGrid';
-import createCoordinateSquare from '../../../src/factories/createCoordinateSquare';
+import drawSquare from '../../../src/utilities/drawSquare';
 
 test('draws a coordinate square', (t) => {
   const coordinateGrid = drawCoordinateGrid([
-    createCoordinateSquare(0, 0, 'A1')
+    createCoordinateGridMember(0, 0, drawSquare('A1'))
   ]);
 
   t.is(coordinateGrid, '┌────┐\n│ A1 │\n└────┘');
@@ -14,8 +15,8 @@ test('draws a coordinate square', (t) => {
 
 test('draws coordinate squares (multiple columns)', (t) => {
   const coordinateGrid = drawCoordinateGrid([
-    createCoordinateSquare(0, 0, 'A1'),
-    createCoordinateSquare(1, 0, 'A2')
+    createCoordinateGridMember(0, 0, drawSquare('A1')),
+    createCoordinateGridMember(1, 0, drawSquare('A2'))
   ]);
 
   t.is(coordinateGrid, '┌────┐┌────┐\n│ A1 ││ A2 │\n└────┘└────┘');
@@ -23,8 +24,8 @@ test('draws coordinate squares (multiple columns)', (t) => {
 
 test('draws coordinate squares (multiple rows)', (t) => {
   const coordinateGrid = drawCoordinateGrid([
-    createCoordinateSquare(0, 0, 'A1'),
-    createCoordinateSquare(0, 1, 'B1')
+    createCoordinateGridMember(0, 0, drawSquare('A1')),
+    createCoordinateGridMember(0, 1, drawSquare('B1'))
   ]);
 
   t.is(coordinateGrid, '┌────┐\n│ A1 │\n└────┘\n┌────┐\n│ B1 │\n└────┘');
@@ -32,24 +33,35 @@ test('draws coordinate squares (multiple rows)', (t) => {
 
 test('draws empty-borderlesss square when coordinate is absent', (t) => {
   const coordinateGrid = drawCoordinateGrid([
-    createCoordinateSquare(0, 0, 'A1'),
-    createCoordinateSquare(2, 0, 'A3')
+    createCoordinateGridMember(0, 0, drawSquare('A1')),
+    createCoordinateGridMember(2, 0, drawSquare('A3'))
   ]);
 
   t.is(coordinateGrid, '┌────┐      ┌────┐\n│ A1 │      │ A3 │\n└────┘      └────┘');
 });
 
-// Misbehaves in Travis-CI.
-// eslint-disable-next-line ava/no-skip-test
-test.skip('draws README example', (t) => {
+test('draws README example (boxes)', (t) => {
   const coordinateGrid = drawCoordinateGrid([
-    createCoordinateSquare(0, 0, 'A1'),
-    createCoordinateSquare(1, 0, 'A2', 'double'),
-    createCoordinateSquare(2, 0, 'A3', 'borderless'),
-    createCoordinateSquare(1, 1, 'B2', 'single', 'green'),
-    createCoordinateSquare(1, 2, 'B3'),
-    createCoordinateSquare(2, 2, 'C3', 'single', 'red')
+    createCoordinateGridMember(0, 0, drawSquare('A1')),
+    createCoordinateGridMember(1, 0, drawSquare('A2', 'double')),
+    createCoordinateGridMember(2, 0, drawSquare('A3', 'borderless')),
+    createCoordinateGridMember(1, 1, drawSquare('B2', 'single', 'green')),
+    createCoordinateGridMember(1, 2, drawSquare('C2')),
+    createCoordinateGridMember(2, 2, drawSquare('C3', 'single', 'red'))
   ]);
 
-  t.is(coordinateGrid, '┌────┐╔════╗      \n│ A1 │║ A2 ║  A3  \n└────┘╚════╝      \n      \u001b[32m┌────┐\u001b[39m      \n      \u001b[32m│ B2 │\u001b[39m      \n      \u001b[32m└────┘\u001b[39m      \n      ┌────┐\u001b[31m┌────┐\u001b[39m\n      │ B3 │\u001b[31m│ C3 │\u001b[39m\n      └────┘\u001b[31m└────┘\u001b[39m');
+  t.is(coordinateGrid, '┌────┐╔════╗      \n│ A1 │║ A2 ║  A3  \n└────┘╚════╝      \n      \u001b[32m┌────┐\u001b[39m      \n      \u001b[32m│ B2 │\u001b[39m      \n      \u001b[32m└────┘\u001b[39m      \n      ┌────┐\u001b[31m┌────┐\u001b[39m\n      │ C2 │\u001b[31m│ C3 │\u001b[39m\n      └────┘\u001b[31m└────┘\u001b[39m');
+});
+
+test('draws README example (single character)', (t) => {
+  const coordinateGrid = drawCoordinateGrid([
+    createCoordinateGridMember(0, 0, 'x'),
+    createCoordinateGridMember(1, 0, 'x'),
+    createCoordinateGridMember(2, 0, 'x'),
+    createCoordinateGridMember(1, 1, 'x'),
+    createCoordinateGridMember(1, 2, 'x'),
+    createCoordinateGridMember(2, 2, 'x')
+  ], '_');
+
+  t.is(coordinateGrid, 'xxx\n_x_\n_xx');
 });

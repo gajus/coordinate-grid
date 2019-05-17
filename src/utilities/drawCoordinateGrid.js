@@ -1,9 +1,9 @@
 // @flow
 
 import type {
-  CoordinateSquareType
+  CoordinateGridMemberType
 } from '../types';
-import drawCoordinateSquare from './drawCoordinateSquare';
+import append from './append';
 
 const findCoordinateSquare = (x: number, y: number) => {
   return (coordinateSquare) => {
@@ -11,56 +11,48 @@ const findCoordinateSquare = (x: number, y: number) => {
   };
 };
 
-const append = (a, b) => {
-  const tailTokens = b.split('\n');
-
-  const lines = a.split('\n');
-
-  let index = 0;
-
-  for (const tailToken of tailTokens) {
-    index++;
-
-    lines[lines.length - (tailTokens.length - index + 1)] += tailToken;
-  }
-
-  return lines.join('\n');
+const drawEmptySquare = () => {
+  return [
+    ' '.repeat(6),
+    ' '.repeat(6),
+    ' '.repeat(6)
+  ].join('\n');
 };
 
-export default (coordinateSquares: $ReadOnlyArray<CoordinateSquareType>): string => {
+export default (coordinateGridMembers: $ReadOnlyArray<CoordinateGridMemberType>, emptySquare: string = drawEmptySquare()): string => {
   let maxX = 0;
   let maxY = 0;
 
-  for (const coordinateSquare of coordinateSquares) {
-    if (maxX < coordinateSquare.x) {
-      maxX = coordinateSquare.x;
+  for (const coordinateGridMember of coordinateGridMembers) {
+    if (maxX < coordinateGridMember.x) {
+      maxX = coordinateGridMember.x;
     }
 
-    if (maxY < coordinateSquare.y) {
-      maxY = coordinateSquare.y;
+    if (maxY < coordinateGridMember.y) {
+      maxY = coordinateGridMember.y;
     }
   }
 
   let currentY = 0;
 
-  let text = '\n\n';
+  let text = '\n'.repeat(emptySquare.split('\n').length + 1);
 
   while (currentY <= maxY) {
     let currentX = 0;
 
     while (currentX <= maxX) {
-      const coordinateSquare = coordinateSquares.find(findCoordinateSquare(currentX, currentY));
+      const coordinateGridMember = coordinateGridMembers.find(findCoordinateSquare(currentX, currentY));
 
-      if (coordinateSquare) {
-        text = append(text, drawCoordinateSquare(coordinateSquare.name, coordinateSquare.style, coordinateSquare.color));
+      if (coordinateGridMember) {
+        text = append(text, coordinateGridMember.body);
       } else {
-        text = append(text, drawCoordinateSquare('', 'borderless'));
+        text = append(text, emptySquare);
       }
 
       currentX++;
     }
 
-    text += '\n\n\n';
+    text += '\n'.repeat(emptySquare.split('\n').length);
 
     currentY++;
   }

@@ -14,32 +14,44 @@ Generates a coordinate grid (CLI square grid).
 ```js
 import {
   createCoordinateSquare,
-  drawCoordinateGrid
+  drawCoordinateGrid,
+  drawSquare
 } from 'coordinate-grid';
 
+
+/**
+ * @param {string} name
+ * @param {number} style Square style (possible values: 'single', 'double', 'borderless') (default value: 'single').
+ * @param {number} color Square color (possible value: 'red', 'green', 'yellow', 'blue') (default: none).
+ * @return {string}
+ */
+drawSquare(name, style, color);
 
 /**
  * Creates an instruction for a single square in a coordinate grid.
  *
  * @param {number} x Horizontal coordinate.
  * @param {number} y Vertical coordinate.
- * @param {number} style Square style (possible values: 'single', 'double', 'borderless') (default value: 'single').
- * @param {number} color Square color (possible value: 'red', 'green', 'yellow', 'blue') (default: none).
- * @returns CoordinateSquare
+ * @param {string} body
+ * @returns {CoordinateSquare}
  */
-createCoordinateSquare(x, y, name, style, color);
+createCoordinateGridMember(x, y, body);
 
 /**
  * Produces a text representation of a collection of coordinate squares placed on a coordinate grid.
  *
  * @param {CoordinateSquare[]} coordinateSquares
+ * @param {string} emptySquare Filler text for missing coordinate members.
+ * @returns {string}
  */
-drawCoordinateGrid(coordinateSquares)
+drawCoordinateGrid(coordinateSquares, emptySquare)
 
 ```
 
 
 ## Example
+
+### Using single character
 
 ```js
 import {
@@ -49,12 +61,42 @@ import {
 
 console.log(
   drawCoordinateGrid([
-    createCoordinateSquare(0, 0, 'A1'),
-    createCoordinateSquare(1, 0, 'A2', 'double'),
-    createCoordinateSquare(2, 0, 'A3', 'borderless'),
-    createCoordinateSquare(1, 1, 'B2', 'single', 'green'),
-    createCoordinateSquare(1, 2, 'B3'),
-    createCoordinateSquare(2, 2, 'C3', 'single', 'red')
+    createCoordinateGridMember(0, 0, 'x'),
+    createCoordinateGridMember(1, 0, 'x'),
+    createCoordinateGridMember(2, 0, 'x'),
+    createCoordinateGridMember(1, 1, 'x'),
+    createCoordinateGridMember(1, 2, 'x'),
+    createCoordinateGridMember(2, 2, 'x')
+  ], '_')
+);
+
+```
+
+Produces:
+
+```
+xxx
+_x_
+_xx
+
+```
+
+### Using ASCII boxes
+
+```js
+import {
+  createCoordinateSquare,
+  drawCoordinateGrid
+} from 'coordinate-grid';
+
+console.log(
+  drawCoordinateGrid([
+    createCoordinateGridMember(0, 0, drawSquare('A1')),
+    createCoordinateGridMember(1, 0, drawSquare('A2', 'double')),
+    createCoordinateGridMember(2, 0, drawSquare('A3', 'borderless')),
+    createCoordinateGridMember(1, 1, drawSquare('B2', 'single', 'green')),
+    createCoordinateGridMember(1, 2, drawSquare('B3')),
+    createCoordinateGridMember(2, 2, drawSquare('C3', 'single', 'red'))
   ])
 );
 
