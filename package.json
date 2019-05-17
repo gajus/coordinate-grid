@@ -49,7 +49,7 @@
     "grid"
   ],
   "main": "./dist/index.js",
-  "name": "square-grid",
+  "name": "coordinate-grid",
   "nyc": {
     "include": [
       "src/**/*.js"
