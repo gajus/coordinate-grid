@@ -45,8 +45,9 @@
     "cli",
     "ascii",
     "square",
-    "coodinate",
-    "grid"
+    "coordinate",
+    "grid",
+    "terminal"
   ],
   "main": "./dist/index.js",
   "name": "coordinate-grid",
