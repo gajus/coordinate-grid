@@ -1,6 +1,7 @@
 // @flow
 
 import test from 'ava';
+import stripAnsi from 'strip-ansi';
 import createCoordinateGridMember from '../../../src/factories/createCoordinateGridMember';
 import drawCoordinateGrid from '../../../src/utilities/drawCoordinateGrid';
 import drawSquare from '../../../src/utilities/drawSquare';
@@ -50,7 +51,7 @@ test('draws README example (boxes)', (t) => {
     createCoordinateGridMember(2, 2, drawSquare('C3', 'single', 'red'))
   ]);
 
-  t.is(coordinateGrid, '┌────┐╔════╗      \n│ A1 │║ A2 ║  A3  \n└────┘╚════╝      \n      \u001b[32m┌────┐\u001b[39m      \n      \u001b[32m│ B2 │\u001b[39m      \n      \u001b[32m└────┘\u001b[39m      \n      ┌────┐\u001b[31m┌────┐\u001b[39m\n      │ C2 │\u001b[31m│ C3 │\u001b[39m\n      └────┘\u001b[31m└────┘\u001b[39m');
+  t.is(stripAnsi(coordinateGrid), '┌────┐╔════╗      \n│ A1 │║ A2 ║  A3  \n└────┘╚════╝      \n      ┌────┐      \n      │ B2 │      \n      └────┘      \n      ┌────┐┌────┐\n      │ C2 ││ C3 │\n      └────┘└────┘');
 });
 
 test('draws README example (single character)', (t) => {

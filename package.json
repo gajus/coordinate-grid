@@ -14,7 +14,8 @@
     "cli-boxes": "^2.2.0",
     "i": "^0.3.6",
     "lodash": "^4.17.11",
-    "npm": "^6.9.0"
+    "npm": "^6.9.0",
+    "strip-ansi": "^5.2.0"
   },
   "description": "Generates a coordinate grid (CLI square grid).",
   "devDependencies": {
