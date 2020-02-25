@@ -4,5 +4,5 @@ export {default as createCoordinateGridMember} from './factories/createCoordinat
 export {default as drawCoordinateGrid} from './utilities/drawCoordinateGrid';
 export {default as drawSquare} from './utilities/drawSquare';
 export type {
-  CoordinateGridMemberType
+  CoordinateGridMemberType,
 } from './types';

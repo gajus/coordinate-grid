@@ -3,11 +3,11 @@
 import chalk from 'chalk';
 import boxStyles from 'cli-boxes';
 import {
-  pad
+  pad,
 } from 'lodash';
 import type {
   SquareColorType,
-  SquareStyleType
+  SquareStyleType,
 } from '../types';
 
 export default (name: string, styleName: SquareStyleType = 'single', color: SquareColorType = null): string => {
@@ -27,7 +27,7 @@ export default (name: string, styleName: SquareStyleType = 'single', color: Squa
       horizontal: ' ',
       topLeft: ' ',
       topRight: ' ',
-      vertical: ' '
+      vertical: ' ',
     };
   } else {
     throw new Error('Unexpected style.');

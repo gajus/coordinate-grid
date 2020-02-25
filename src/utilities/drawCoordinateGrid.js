@@ -1,7 +1,7 @@
 // @flow
 
 import type {
-  CoordinateGridMemberType
+  CoordinateGridMemberType,
 } from '../types';
 import append from './append';
 
@@ -15,7 +15,7 @@ const drawEmptySquare = () => {
   return [
     ' '.repeat(6),
     ' '.repeat(6),
-    ' '.repeat(6)
+    ' '.repeat(6),
   ].join('\n');
 };
 

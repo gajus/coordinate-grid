@@ -6,5 +6,5 @@ export type SquareStyleType = 'single-character' | 'single' | 'double' | 'border
 export type CoordinateGridMemberType = {|
   +body: string,
   +x: number,
-  +y: number
+  +y: number,
 |};

@@ -15,9 +15,8 @@ Generates a coordinate grid (CLI square grid).
 import {
   createCoordinateSquare,
   drawCoordinateGrid,
-  drawSquare
+  drawSquare,
 } from 'coordinate-grid';
-
 
 /**
  * @param {string} name
@@ -56,7 +55,7 @@ drawCoordinateGrid(coordinateSquares, emptySquare)
 ```js
 import {
   createCoordinateSquare,
-  drawCoordinateGrid
+  drawCoordinateGrid,
 } from 'coordinate-grid';
 
 console.log(
@@ -86,7 +85,8 @@ _xx
 ```js
 import {
   createCoordinateSquare,
-  drawCoordinateGrid
+  drawCoordinateGrid,
+  drawSquare,
 } from 'coordinate-grid';
 
 console.log(

@@ -1,17 +1,17 @@
 // @flow
 
 import type {
-  CoordinateGridMemberType
+  CoordinateGridMemberType,
 } from '../types';
 
 export default (
   x: number,
   y: number,
-  body: string
+  body: string,
 ): CoordinateGridMemberType => {
   return {
     body,
     x,
-    y
+    y,
   };
 };

@@ -5,37 +5,46 @@
     "url": "http://gajus.com"
   },
   "ava": {
+    "babel": {
+      "compileAsTests": [
+        "test/helpers/**/*"
+      ]
+    },
+    "files": [
+      "test/coordinate-grid/**/*"
+    ],
     "require": [
       "@babel/register"
     ]
   },
   "dependencies": {
-    "chalk": "^2.4.2",
+    "chalk": "^3.0.0",
     "cli-boxes": "^2.2.0",
     "i": "^0.3.6",
-    "lodash": "^4.17.11",
-    "npm": "^6.9.0",
-    "strip-ansi": "^5.2.0"
+    "lodash": "^4.17.15",
+    "npm": "^6.13.7",
+    "strip-ansi": "^6.0.0"
   },
   "description": "Generates a coordinate grid (CLI square grid).",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "@babel/node": "^7.2.2",
-    "@babel/plugin-transform-flow-strip-types": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "@babel/register": "^7.4.4",
-    "ava": "^1.4.1",
-    "babel-plugin-istanbul": "^5.1.4",
+    "@ava/babel": "^1.0.1",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/plugin-transform-flow-strip-types": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/register": "^7.8.3",
+    "ava": "^3.4.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "babel-plugin-transform-export-default-name": "^2.0.4",
-    "coveralls": "^3.0.3",
-    "eslint": "^5.16.0",
-    "eslint-config-canonical": "^17.1.0",
-    "flow-bin": "^0.98.1",
-    "flow-copy-source": "^2.0.6",
-    "husky": "^2.3.0",
-    "nyc": "^14.1.1",
-    "semantic-release": "^15.13.12"
+    "coveralls": "^3.0.9",
+    "eslint": "^6.8.0",
+    "eslint-config-canonical": "^19.0.2",
+    "flow-bin": "^0.119.0",
+    "flow-copy-source": "^2.0.9",
+    "husky": "^4.2.3",
+    "nyc": "^15.0.0",
+    "semantic-release": "^17.0.4"
   },
   "engines": {
     "node": ">=6.0"
