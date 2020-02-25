@@ -10,7 +10,11 @@ import type {
   SquareStyleType,
 } from '../types';
 
-export default (name: string, styleName: SquareStyleType = 'single', color: SquareColorType = null): string => {
+export default (
+  name: string,
+  styleName: SquareStyleType = 'single',
+  color: SquareColorType = null,
+): string => {
   const size = 6;
   const body = pad(name, size - 2);
 

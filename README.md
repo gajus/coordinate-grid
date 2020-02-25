@@ -15,7 +15,7 @@ Generates a coordinate grid (CLI square grid).
 import {
   createCoordinateSquare,
   drawCoordinateGrid,
-  drawSquare,
+  drawSquare
 } from 'coordinate-grid';
 
 /**
