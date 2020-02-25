@@ -39,7 +39,7 @@
     "babel-plugin-transform-export-default-name": "^2.0.4",
     "coveralls": "^3.0.9",
     "eslint": "^6.8.0",
-    "eslint-config-canonical": "^19.0.2",
+    "eslint-config-canonical": "^19.0.3",
     "flow-bin": "^0.119.0",
     "flow-copy-source": "^2.0.9",
     "husky": "^4.2.3",
@@ -47,7 +47,7 @@
     "semantic-release": "^17.0.4"
   },
   "engines": {
-    "node": ">=6.0"
+    "node": ">=10.0"
   },
   "husky": {
     "hooks": {
