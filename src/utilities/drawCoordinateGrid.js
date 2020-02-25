@@ -57,5 +57,7 @@ export default (coordinateGridMembers: $ReadOnlyArray<CoordinateGridMemberType>,
     currentY++;
   }
 
-  return text.trim();
+  return text
+    .replace(/^\n\n/, '')
+    .replace(/\s+$/, '');
 };

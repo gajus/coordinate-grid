@@ -23,6 +23,14 @@ test('draws coordinate squares (multiple columns)', (t) => {
   t.is(coordinateGrid, '┌────┐┌────┐\n│ A1 ││ A2 │\n└────┘└────┘');
 });
 
+test('draws coordinate squares (multiple columns; first column empty)', (t) => {
+  const coordinateGrid = drawCoordinateGrid([
+    createCoordinateGridMember(1, 0, drawSquare('B1')),
+  ]);
+
+  t.is(coordinateGrid, '      ┌────┐\n      │ B1 │\n      └────┘');
+});
+
 test('draws coordinate squares (multiple rows)', (t) => {
   const coordinateGrid = drawCoordinateGrid([
     createCoordinateGridMember(0, 0, drawSquare('A1')),
@@ -30,6 +38,14 @@ test('draws coordinate squares (multiple rows)', (t) => {
   ]);
 
   t.is(coordinateGrid, '┌────┐\n│ A1 │\n└────┘\n┌────┐\n│ B1 │\n└────┘');
+});
+
+test('draws coordinate squares (multiple rows; first row empty)', (t) => {
+  const coordinateGrid = drawCoordinateGrid([
+    createCoordinateGridMember(0, 1, drawSquare('B1')),
+  ]);
+
+  t.is(coordinateGrid, '      \n      \n      \n┌────┐\n│ B1 │\n└────┘');
 });
 
 test('draws empty-borderlesss square when coordinate is absent', (t) => {
